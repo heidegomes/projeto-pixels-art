@@ -1,3 +1,4 @@
+window.onload;
 // 7. A cor clicada é selecionada
 
 let elemPreviaSelected = document.querySelector('.selected');
@@ -14,6 +15,7 @@ function clicaNaPaleta(evento) {
   elemPreviaSelected = elemCorClicada;
 }
 
+// 8. Preenche um pixel do quadro com a cor selecionada
 function clicaNoPixel(evento) {
   const elemPixel = evento.target;
   const novaCorPixel = elemPreviaSelected.classList.item(1);
@@ -22,45 +24,42 @@ function clicaNoPixel(evento) {
   console.log(elemPixel);
 }
 
-const paleta = document.querySelector('#collor-palette');
+const paleta = document.querySelector('#color-palette');
 paleta.addEventListener('click', clicaNaPaleta);
 
 const pixelBoard = document.querySelector('#pixel-board');
 pixelBoard.addEventListener('click', clicaNoPixel);
 
+// 9. retorna a cor do quadro quando clicar no botão limpar
+function createClearButton(buttonName) {
+  let buttonContainer = document.querySelector('.buttons-container');
+  let newButton = document.createElement('button');
+  let newButtonID = 'clear-board';
 
-// const color = document.querySelector('.color')[0];
-// const color= document.querySelector('.color')[1];
-// const color1 = document.querySelector('.color')[2];
-// const color1 = document.querySelector('.color')[3];
-// let colorSelected = color black;
+  newButton.innerHTML = buttonName;
+  newButton.id = newButtonID;
+  buttonContainer.appendChild(newButton);
+}
 
-// color1.addEventListener('click', function () {
-//   colorSelected = 'color1';
-// });
+createClearButton('Limpar');
 
-// color2.addEventListener('click', function () {
-//   colorSelected = 'color2';
-// });
+function clearBoard() {
+  let getButton = document.querySelector('#clear-board');
+  console.log(getButton);
+  let board = document.getElementsByClassName('pixel');
+  console.log(board);
+  let filled = document.getElementsByClassName('color');
+  console.log(filled);
+  let unfilled = document.getElementById('pixel');
+  console.log(unfilled);
 
-// color3.addEventListener('click', function () {
-//   colorSelected = 'color3';
-// });
+  getButton.addEventListener('click', () => { // cria o escutador de eventos
+    for (let index = 0; index < board.length; index += 1) {
+      if (board[index].classList === filled) {
+        board[index].classList = unfilled;
+      }
+    }
+  });
+}
 
-// color4.addEventListener('click', function () {
-//   colorSelected = 'color4';
-// });
-
-// function clicaNoPixel(evento) {
-//   const pixelClicado = evento.target.className;
-//   const pixel = document.getElementById('pixel-board');
-//   corFavorita.className = corClicada;
-
-//   console.log(evento.target.className);
-// }
-
-// const quadroPixel= document.querySelector('pixel-board');
-// const pixel = document.querySelector('.pixel');
-// pixel.addEventListener('click', function () {
-// pixel.className = 'colorSelected';
-// })
+clearBoard();

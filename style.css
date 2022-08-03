@@ -1,5 +1,5 @@
-#collor-palette{
-  width: 100%;
+#color-palette{
+  width: 200px;
   height: 50px;
 }
 
@@ -41,15 +41,14 @@
 #pixel-board {
   display: grid;
   grid-template-columns: repeat(5, 40px);
+  position: absolute;
 }
 
-
-
-
-/* .pixel {
-  background-color: white;
+.buttons-container {
   display: inline-block;
-  border: black solid 1px;
-} */
+  text-align: center;
+  width: 180px;
+  margin: 10px;
+}
 
 
